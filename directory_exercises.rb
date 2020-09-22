@@ -16,7 +16,7 @@ def print_header
 end
 def print(students)
   students.each_with_index do |student, index|
-    puts "#{student[:name]}" if student[:name][0] == "A"
+    puts "#{student[:name]}" if student[:name].length < 12
   end
 end
 def print_footer(students)
