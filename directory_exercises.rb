@@ -16,7 +16,7 @@ def print_header
 end
 def print(students)
   students.each_with_index do |student, index|
-    puts "#{index}: #{student[:name]}"
+    puts "#{student[:name]}" if student[:name][0] == "A"
   end
 end
 def print_footer(students)
