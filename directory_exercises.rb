@@ -1,14 +1,23 @@
 def input_students
   students = []
-
+  cohorts = [:january, :february, :march, :april, :may, :june, :july, :august,
+  :september, :october, :november, :december]
   while true
     puts "Please enter student name"
-    name = gets.chomp
+    name = gets.chomp.capitalize
     break if name.empty?
-    puts "Which cohort are they in?"
-    cohort = gets.chomp.to_sym
-    cohort = :novemebr if cohort.empty?
 
+    puts "Which cohort are they in?"
+    while true
+      cohort = gets.chomp.downcase.to_sym
+      cohort = :november if cohort.empty?
+      if cohorts.include?(cohort)
+        cohort
+        break
+      else
+        puts "Error, please re-enter cohort"
+      end
+    end
     students << {name: name, cohort: cohort}
 
     puts "Now we have #{students.count} students"
