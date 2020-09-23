@@ -5,17 +5,12 @@ def input_students
     puts "Please enter student name"
     name = gets.chomp
     break if name.empty?
-    hobies = []
-    puts "Enter student's hobies"
-    while true
-      hobie = gets.chomp
-      break if hobie.empty?
-      hobies << hobie
-    end
-    puts "Enter student's date of birth"
-    birthday = gets.chomp
+    puts "Which cohort are they in?"
+    cohort = gets.chomp.to_sym
+    cohort = :novemebr if cohort.empty?
 
-    students << {name: name, hobies: hobies, birthday: birthday, cohort: :november}
+    students << {name: name, cohort: cohort}
+
     puts "Now we have #{students.count} students"
   end
   students
@@ -26,7 +21,7 @@ def print_header
 end
 def print(students)
   students.each do |student|
-    puts "#{student[:name]}, favourite hobies: #{student[:hobies]}, born #{student[:birthday]}, (#{student[:cohort]} cohort)".center(100)
+    puts "#{student[:name]}, (#{student[:cohort]} cohort)".center(100)
   end
 end
 def print_footer(students)
