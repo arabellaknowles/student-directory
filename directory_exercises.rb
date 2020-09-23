@@ -15,8 +15,10 @@ def print_header
   puts "-------------"
 end
 def print(students)
-  students.each_with_index do |student, index|
-    puts "#{student[:name]}" if student[:name].length < 12
+  index = 0
+  until index == (students.index(students[-1]) + 1)
+    puts students[index][:name]
+    index += 1
   end
 end
 def print_footer(students)
