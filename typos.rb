@@ -34,6 +34,6 @@ end
 
 
 students = input_students
-print_header
+print_header if !students.empty?
 print(students)
 print_footer(students)

@@ -23,6 +23,6 @@ def print_footer(students)
   puts "Overall, we have #{students.count} great students"
 end
 students = input_students
-print_header
+print_header if !students.empty?
 print(students)
 print_footer(students)
