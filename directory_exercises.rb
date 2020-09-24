@@ -23,6 +23,8 @@ def input_students
 
     current_cohorts.key?(cohort) ? current_cohorts[cohort] << name : current_cohorts[cohort] = [name]
     students << {name: name, cohort: cohort}
+
+    students.count == 1 ? (puts "Now we have #{students.count} student") : (puts "Now we have #{students.count} students")
   end
   current_cohorts
 end
