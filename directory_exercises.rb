@@ -6,6 +6,7 @@ def input_students
 
   while true
     puts "Please enter student name"
+    puts "To finish, just hit return twice"
     name = gets.gsub("\n", "")
     break if name.empty?
 
