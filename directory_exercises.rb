@@ -6,12 +6,12 @@ def input_students
 
   while true
     puts "Please enter student name"
-    name = gets.chomp.capitalize
+    name = gets.gsub("\n", "")
     break if name.empty?
 
     puts "Which cohort are they in?"
     while true
-      cohort = gets.chomp.downcase.to_sym
+      cohort = gets.gsub("\n", "").to_sym
       cohort = :november if cohort.empty?
       if total_cohorts.include?(cohort)
         cohort
