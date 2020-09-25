@@ -11,16 +11,16 @@ end
 def interactive_menu
   loop do
     print_menu
-    process(STDIN.gets.chomp)
+    method_selector(STDIN.gets.chomp)
   end
 end
 
-def process(selection)
-  case selection
+def method_selector(user_input)
+  case user_input
     when "1"
       input_students
     when "2"
-      show_students
+      display_student_list
     when "3"
       save_students
     when "4"
@@ -48,7 +48,7 @@ def add_to_student_array(name, cohort)
   @students << {name: name, cohort: cohort.to_sym}
 end
 
-def show_students
+def display_student_list
   print_header
   print_student_list
   print_footer
@@ -94,14 +94,18 @@ def try_load_students
   filename = ARGV.first # first argument from the command line
   if filename.nil?
     load_students()
-    puts "Loaded #{@students.count} from students.csv"
+    number_of_students("students.csv")
   elsif File.exists?(filename) # if it exists
     load_students(filename)
-    puts "Loaded #{@students.count} from #{filename}"
+    number_of_students(filename)
   else # if it doesn't exist
     puts "Sorry, #{filename} doesn't exist."
     exit # quit the program
   end
+end
+
+def number_of_students(filename)
+  puts "Loaded #{@students.count} from #{filename}"
 end
 
 try_load_students
