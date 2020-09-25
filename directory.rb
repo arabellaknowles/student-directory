@@ -19,17 +19,25 @@ def method_selector(user_input)
   case user_input
     when "1"
       input_students
+      action_complete
     when "2"
       display_student_list
+      action_complete
     when "3"
       save_students
+      action_complete
     when "4"
       load_students
+      action_complete
     when "9"
       exit # this will cause the program to terminate
     else
       puts "I don't know what you meant, try again"
   end
+end
+
+def action_complete
+  puts "Action completed."
 end
 
 def input_students
