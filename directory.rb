@@ -18,22 +18,42 @@ end
 def method_selector(user_input)
   case user_input
     when "1"
-      input_students
-      action_complete
+      option_1
     when "2"
-      display_student_list
-      action_complete
+      option_2
     when "3"
-      save_students
-      action_complete
+      option_3
     when "4"
-      load_students
-      action_complete
+      option_4
     when "9"
       exit # this will cause the program to terminate
     else
       puts "I don't know what you meant, try again"
   end
+end
+
+def option_1
+  input_students
+  action_complete
+end
+
+def option_2
+  display_student_list
+  action_complete
+end
+
+def option_3
+  puts "Which file would you like to save to?"
+  file_choice = STDIN.gets.chomp
+  save_students(file_choice)
+  action_complete
+end
+
+def option_4
+  puts "Which file would you like to load?"
+  file_choice = STDIN.gets.chomp
+  load_students(file_choice)
+  action_complete
 end
 
 def action_complete
@@ -77,9 +97,9 @@ def print_footer
   puts "Overall, we have #{@students.count} great students"
 end
 
-def save_students
+def save_students(filename)
   # open the file for writing
-  file = File.open("students.csv", "w")
+  file = File.open(filename, "w")
   # iterate over the array of save_students
   @students.each do |student|
     student_data = [student[:name], student[:cohort]]
