@@ -9,7 +9,6 @@ def print_menu
 end
 
 def interactive_menu
-  try_load_students
   loop do
     print_menu
     process(STDIN.gets.chomp)
@@ -37,11 +36,16 @@ def input_students
   puts "Please enter the names of the students"
   puts "To finish, just hit return twice"
   name = STDIN.gets.chomp
+  cohort = "november"
   while !name.empty? do
-    @students << {name: name, cohort: :november}
+    add_to_student_array(name, cohort)
     puts "Now we have #{@students.count} students"
-    name = gets.chomp
+    name = STDIN.gets.chomp
   end
+end
+
+def add_to_student_array(name, cohort)
+  @students << {name: name, cohort: cohort.to_sym}
 end
 
 def show_students
@@ -81,7 +85,7 @@ def load_students(filename = "students.csv")
   file = File.open(filename, "r")
   file.readlines.each do |line|
   name, cohort = line.chomp.split(',')
-      @students << {name: name, cohort: cohort.to_sym}
+      add_to_student_array(name, cohort)
   end
     file.close
 end
@@ -98,4 +102,5 @@ def try_load_students
   end
 end
 
+try_load_students
 interactive_menu
