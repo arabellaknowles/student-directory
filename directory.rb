@@ -1,4 +1,4 @@
-@students = [] # an empty array accessible to all methods
+@students = []
 
 def print_menu
   puts "1. Input the students"
@@ -26,7 +26,7 @@ def method_selector(user_input)
     when "4"
       option_4
     when "9"
-      exit # this will cause the program to terminate
+      exit
     else
       puts "I don't know what you meant, try again"
   end
@@ -98,9 +98,7 @@ def print_footer
 end
 
 def save_students(filename)
-  # open the file for writing
   file = File.open(filename, "w")
-  # iterate over the array of save_students
   @students.each do |student|
     student_data = [student[:name], student[:cohort]]
     csv_line = student_data.join(",")
@@ -110,25 +108,24 @@ def save_students(filename)
 end
 
 def load_students(filename = "students.csv")
-  File.open(filename, "r") do |file|
-    file.readlines.each do |line|
-    name, cohort = line.chomp.split(',')
-      add_to_student_array(name, cohort)
-    end
+  require 'csv'
+  CSV.foreach(filename) do |row|
+    name, cohort = row.split(',')
+    add_to_student_array(name, cohort)
   end
 end
 
 def try_load_students
-  filename = ARGV.first # first argument from the command line
+  filename = ARGV.first
   if filename.nil?
     load_students()
     number_of_students("students.csv")
-  elsif File.exists?(filename) # if it exists
+  elsif File.exists?(filename)
     load_students(filename)
     number_of_students(filename)
-  else # if it doesn't exist
+  else
     puts "Sorry, #{filename} doesn't exist."
-    exit # quit the program
+    exit 
   end
 end
 
