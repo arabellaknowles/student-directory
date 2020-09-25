@@ -110,7 +110,7 @@ end
 def load_students(filename = "students.csv")
   require 'csv'
   CSV.foreach(filename) do |row|
-    name, cohort = row.split(',')
+    name, cohort = row
     add_to_student_array(name, cohort)
   end
 end
@@ -125,7 +125,7 @@ def try_load_students
     number_of_students(filename)
   else
     puts "Sorry, #{filename} doesn't exist."
-    exit 
+    exit
   end
 end
 
