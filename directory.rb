@@ -132,5 +132,9 @@ def number_of_students(filename)
   puts "Loaded #{@students.count} from #{filename}"
 end
 
+def print_source_code
+  File.open(__FILE__, "r"){ |file| file.readlines.each{ |line| puts line }}
+end
+
 try_load_students
 interactive_menu
