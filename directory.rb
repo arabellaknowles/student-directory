@@ -115,25 +115,21 @@ def load_students(filename = "students.csv")
     name, cohort = row
     add_to_student_array(name, cohort)
   end
+  puts "Loaded #{@students.count} from #{filename}"
 end
 
 def try_load_students
   filename = ARGV.first
   if filename.nil?
     load_students()
-    number_of_students("students.csv")
   elsif File.exists?(filename)
     load_students(filename)
-    number_of_students(filename)
   else
     puts "Sorry, #{filename} doesn't exist."
     exit
   end
 end
 
-def number_of_students(filename)
-  puts "Loaded #{@students.count} from #{filename}"
-end
 
 def print_source_code
   File.open(__FILE__, "r"){ |file| file.readlines.each{ |line| puts line }}
