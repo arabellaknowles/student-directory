@@ -98,16 +98,15 @@ def print_footer
 end
 
 def save_students(filename)
-  file = File.open(filename, "w")
-  @students.each do |student|
-    student_data = [student[:name], student[:cohort]]
-    csv_line = student_data.join(",")
-    file.puts csv_line
+  CSV.open(filename, "w") do |csv|
+    @students.each do |student|
+      csv << [student[:name], student[:cohort]]
+    end
   end
-  file.close
 end
 
 def load_students(filename = "students.csv")
+  @students.clear
   require 'csv'
   CSV.foreach(filename) do |row|
     name, cohort = row
