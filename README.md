@@ -11,8 +11,4 @@ ruby directory.rb
 ```
 2) You will then be provided with a list of available actions. Input the number according to which action you would like to take:
 
-<img src="app_use_image.png"
-     alt="Image of app in use"
-     style="float: left; margin-right: 10px;" />
-
-![Image](app_use_image.png)
+<img src="app_use_image.png" alt="image" width="400"/>
