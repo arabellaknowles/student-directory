@@ -10,4 +10,7 @@ The user is able to input names from the terminal, save the names to a csv file 
 ruby directory.rb
 ```
 2) You will then be provided with a list of available actions. Input the number according to which action you would like to take:
-![App use image](app_use_image.png)
+
+<img src="./app_use_image.png"
+     alt="Image of app in use"
+     style="float: left; margin-right: 10px;" />
